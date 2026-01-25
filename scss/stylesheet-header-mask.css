@@ -1,0 +1,54 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh; /* Mobile vh-Bug fixen (Optional): auf Mobile gibt’s ein CSS-Feature svh, lvh, dvh (Safe Viewport Height): */
+  background-image: url(../img/header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+header::after {
+  content: "";
+  position: absolute;
+  width: 100%; /* Kein Clipping mehr:  ::after ist immer so groß wie dein header. Das Bild wird über background-position verschoben, also gibt’s kein Abschneiden. */
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  background: url(../img/header-maske-LP.webp) no-repeat left/cover;
+  animation: mask-pan 20s ease alternate 1;
+  z-index: 1;
+  pointer-events: none;
+}
+@keyframes mask-pan {
+  0% {
+    background-position: 0% 0%;
+  }
+  30% {
+    background-position: 95% 0%;
+  }
+  50% {
+    background-position: 20% 0%;
+  }
+  70% {
+    background-position: 68% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}/*# sourceMappingURL=stylesheet-header-mask.css.map */
